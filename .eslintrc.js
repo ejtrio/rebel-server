@@ -40,7 +40,7 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/naming-convention': [
       'error',
-      { selector: 'default', format: ['camelCase', 'PascalCase'] }
+      { selector: 'default', format: ['camelCase', 'PascalCase', 'snake_case'] }
     ],
     '@typescript-eslint/no-explicit-any': 'off',
   },

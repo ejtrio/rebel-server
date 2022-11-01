@@ -1,8 +1,10 @@
-import { AppService } from './app.service';
 import { Module } from '@nestjs/common';
+import { RebelService } from './rebel.service';
+import { RepositoriesModule } from '../repositories/repositories.module';
 
 @Module({
-  providers: [AppService],
-  exports: [AppService],
+  imports: [RepositoriesModule],
+  providers: [RebelService],
+  exports: [RebelService],
 })
 export class ServicesModule {}

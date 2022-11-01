@@ -26,17 +26,6 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Architectural Design
-
-Backend services will follow an [N-Tier architecture](https://www.baeldung.com/cs/n-tier-architecture). Here is a brief TLDR explanation.
-
-Most N-Tier architectures end up consisting of 3 tiers:
-* Presentation
-* Logic
-* Data
-
-
-
 ## Installation
 
 ```bash
