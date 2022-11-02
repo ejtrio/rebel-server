@@ -1,4 +1,5 @@
 import { AppModule } from './app.module';
+import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
 import { Logger } from 'nestjs-pino';
 import { NestFactory } from '@nestjs/core';
@@ -10,6 +11,6 @@ async function bootstrap() {
   });
   app.useLogger(app.get(Logger));
   app.use(helmet());
-  await app.listen(3000);
+  await app.listen(app.get(ConfigService).get('PORT'));
 }
 bootstrap().catch((e) => console.error(e));

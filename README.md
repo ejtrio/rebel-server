@@ -24,7 +24,11 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) framework TypeScript server with several endpoints to help the Rebel Alliance beat the Galactic Empire.
+
+Lower versions of node might work, but for reference the application was developed using node v18.12.0.
+
+For descriptions of the endpoints and their functionality please reference the OpenAPI yaml file included in this repository
 
 ## Installation
 
@@ -33,6 +37,8 @@ $ npm install
 ```
 
 ## Running the app
+
+By default the server will start up on port 3000. If you need to change this simply change the PORT value in the .env file.
 
 ```bash
 # development

@@ -12,7 +12,7 @@ export class RebelService {
   ): Promise<Array<StarshipEntity>> {
     const retrievedPerson = await this.rebelRepository.getPersonByName(person);
     if (!retrievedPerson) {
-      return [];
+      throw new Error('Person not found');
     }
     return await this.rebelRepository.getStarshipsByUrls(
       retrievedPerson.starships,

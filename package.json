@@ -1,7 +1,7 @@
 {
   "name": "core-10-challenge",
   "version": "0.0.1",
-  "description": "",
+  "description": "Server to retrieve and modify data from swapi",
   "author": "ejtrio",
   "private": true,
   "license": "UNLICENSED",

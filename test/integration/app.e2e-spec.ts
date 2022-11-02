@@ -67,9 +67,28 @@ describe('Controller (e2e)', () => {
         }),
       );
     return request(app.getHttpServer())
-      .get('/starships?person=Luke Skywalker')
+      .get('/rebel/starships?person=Luke Skywalker')
       .expect(200)
       .expect([mockSkywalkerShip1, mockSkywalkerShip2]);
+  });
+
+  it('/starships (GET) 404', () => {
+    mockHttpService.get.mockReturnValueOnce(
+      of({
+        status: 200,
+        statusText: 'OK',
+        data: {
+          count: 0,
+          next: null,
+          previous: null,
+          results: [],
+        },
+      }),
+    );
+    return request(app.getHttpServer())
+      .get('/rebel/starships?person=Luke Skywalker')
+      .expect(404)
+      .expect({ status: 404, error: 'Person not found' });
   });
 
   it('/classifications (GET)', () => {
@@ -108,9 +127,16 @@ describe('Controller (e2e)', () => {
         }),
       );
     return request(app.getHttpServer())
-      .get('/classifications?episode=1')
+      .get('/rebel/classifications?episode=1')
       .expect(200)
       .expect(['mammal', 'artificial']);
+  });
+
+  it('/classifications (GET) 400', () => {
+    return request(app.getHttpServer())
+      .get('/rebel/classifications?episode=One')
+      .expect(400)
+      .expect({ status: 400, error: 'Episode must be a number' });
   });
 
   it('/galaxy (GET)', () => {
@@ -151,9 +177,12 @@ describe('Controller (e2e)', () => {
           },
         }),
       );
-    return request(app.getHttpServer()).get('/galaxy').expect(200).expect({
-      numberOfPlanets: 3,
-      totalPopulation: 2000200000,
-    });
+    return request(app.getHttpServer())
+      .get('/rebel/galaxy')
+      .expect(200)
+      .expect({
+        numberOfPlanets: 3,
+        totalPopulation: 2000200000,
+      });
   });
 });

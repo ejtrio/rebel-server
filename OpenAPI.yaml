@@ -1,0 +1,157 @@
+openapi: 3.0.0
+servers:
+  - description: Core10 code challenge service
+    url: http://localhost:3000/rebel
+info:
+  version: "0.0.1"
+  title: Rebel Server
+  description: The API for beating the Galactic Empire
+paths:
+  /starships:
+    get:
+      tags:
+        - Starships
+      description: returns all starships related to the person queried
+      operationId: getStarshipsForPerson
+      parameters:
+        - in: query
+          name: person
+          description: Person related to the starships
+          schema:
+            type: string
+      responses:
+        '200':
+          description: All starships related to the person
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Starship'
+        '404':
+          description: Person queried not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    format: int32
+                  error:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    format: int32
+                  error:
+                    type: string
+  /classifications:
+    get:
+      tags:
+        - Classifications
+      description: returns all species classifications for the episode queried
+      operationId: getSpeciesClassificationForEpisode
+      parameters:
+        - in: query
+          name: episode
+          description: Episode of classifications
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: All species classifications in the episode
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Episode not a number
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    format: int32
+                  error:
+                    type: string
+        '500':
+          description: Internal Server Error
+  /galaxy:
+    get:
+      tags:
+        - Galaxy
+      description: returns some summary statistics of the galaxy
+      operationId: getGalaxySummary
+      responses:
+        '200':
+          description: Summary statistics for the galaxy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Galaxy'
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    Starship:
+      type: object
+      properties:
+        name:
+          type: string
+        model:
+          type: string
+        starship_class:
+          type: string
+        manufacturer:
+          type: string
+        cost_in_credits:
+          type: string
+        length:
+          type: string
+        crew:
+          type: string
+        max_atmoshering_speed:
+          type: string
+        hyperdrive_rating:
+          type: string
+        MGLT:
+          type: string
+        cargo_capacity:
+          type: string
+        consumables:
+          type: string
+        films:
+          type: array
+          items:
+            type: string
+        pilots:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+        created:
+          type: string
+        edited:
+          type: string
+    Galaxy:
+      type: object
+      properties:
+        numberOfPlanets:
+          type: integer
+          format: int32
+        totalPopulation:
+          type: integer
+          format: int32
