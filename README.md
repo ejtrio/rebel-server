@@ -28,9 +28,9 @@
 
 Lower versions of node might work, but for reference the application was developed using node v18.12.0.
 
-For descriptions of the endpoints and their functionality please reference the OpenAPI yaml file included in this repository
-
 ## Installation
+
+Clone this repository and run the following inside the new directory.
 
 ```bash
 $ npm install
@@ -50,6 +50,14 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## Using the app
+
+With the server now running, you can use either a web browser or a program like Postman to hit the endpoints.
+
+Ex: http://localhost:3000/rebel/starships?person=Luke%20Skywalker
+
+For full descriptions of the endpoints and their functionality please reference the OpenAPI yaml file included in this repository.
 
 ## Test
 
